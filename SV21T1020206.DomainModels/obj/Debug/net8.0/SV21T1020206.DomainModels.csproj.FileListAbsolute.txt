@@ -1,0 +1,11 @@
+F:\LTUDWeb\SV21T1020206\SV21T1020206.DomainModels\bin\Debug\net8.0\SV21T1020206.DomainModels.deps.json
+F:\LTUDWeb\SV21T1020206\SV21T1020206.DomainModels\bin\Debug\net8.0\SV21T1020206.DomainModels.dll
+F:\LTUDWeb\SV21T1020206\SV21T1020206.DomainModels\bin\Debug\net8.0\SV21T1020206.DomainModels.pdb
+F:\LTUDWeb\SV21T1020206\SV21T1020206.DomainModels\obj\Debug\net8.0\SV21T1020206.DomainModels.GeneratedMSBuildEditorConfig.editorconfig
+F:\LTUDWeb\SV21T1020206\SV21T1020206.DomainModels\obj\Debug\net8.0\SV21T1020206.DomainModels.AssemblyInfoInputs.cache
+F:\LTUDWeb\SV21T1020206\SV21T1020206.DomainModels\obj\Debug\net8.0\SV21T1020206.DomainModels.AssemblyInfo.cs
+F:\LTUDWeb\SV21T1020206\SV21T1020206.DomainModels\obj\Debug\net8.0\SV21T1020206.DomainModels.csproj.CoreCompileInputs.cache
+F:\LTUDWeb\SV21T1020206\SV21T1020206.DomainModels\obj\Debug\net8.0\SV21T1020206.DomainModels.dll
+F:\LTUDWeb\SV21T1020206\SV21T1020206.DomainModels\obj\Debug\net8.0\refint\SV21T1020206.DomainModels.dll
+F:\LTUDWeb\SV21T1020206\SV21T1020206.DomainModels\obj\Debug\net8.0\SV21T1020206.DomainModels.pdb
+F:\LTUDWeb\SV21T1020206\SV21T1020206.DomainModels\obj\Debug\net8.0\ref\SV21T1020206.DomainModels.dll

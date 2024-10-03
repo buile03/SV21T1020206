@@ -1,0 +1,11 @@
+F:\LTUDWeb\SV21T1020206\SV21T1020206.DataLayers\bin\Debug\net8.0\SV21T1020206.DataLayers.deps.json
+F:\LTUDWeb\SV21T1020206\SV21T1020206.DataLayers\bin\Debug\net8.0\SV21T1020206.DataLayers.dll
+F:\LTUDWeb\SV21T1020206\SV21T1020206.DataLayers\bin\Debug\net8.0\SV21T1020206.DataLayers.pdb
+F:\LTUDWeb\SV21T1020206\SV21T1020206.DataLayers\obj\Debug\net8.0\SV21T1020206.DataLayers.GeneratedMSBuildEditorConfig.editorconfig
+F:\LTUDWeb\SV21T1020206\SV21T1020206.DataLayers\obj\Debug\net8.0\SV21T1020206.DataLayers.AssemblyInfoInputs.cache
+F:\LTUDWeb\SV21T1020206\SV21T1020206.DataLayers\obj\Debug\net8.0\SV21T1020206.DataLayers.AssemblyInfo.cs
+F:\LTUDWeb\SV21T1020206\SV21T1020206.DataLayers\obj\Debug\net8.0\SV21T1020206.DataLayers.csproj.CoreCompileInputs.cache
+F:\LTUDWeb\SV21T1020206\SV21T1020206.DataLayers\obj\Debug\net8.0\SV21T1020206.DataLayers.dll
+F:\LTUDWeb\SV21T1020206\SV21T1020206.DataLayers\obj\Debug\net8.0\refint\SV21T1020206.DataLayers.dll
+F:\LTUDWeb\SV21T1020206\SV21T1020206.DataLayers\obj\Debug\net8.0\SV21T1020206.DataLayers.pdb
+F:\LTUDWeb\SV21T1020206\SV21T1020206.DataLayers\obj\Debug\net8.0\ref\SV21T1020206.DataLayers.dll
