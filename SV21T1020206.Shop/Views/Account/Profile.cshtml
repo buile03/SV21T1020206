@@ -1,0 +1,59 @@
+﻿@model SV21T1020206.DomainModels.Customer
+@{
+    Layout = "_Layout";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="card-title mb-0">
+                        <i class="bi bi-person-circle me-2"></i>Thông tin cá nhân
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        
+                        <div class="col-md-8">
+                            <h4 class="mb-3">@Model.CustomerName</h4>
+                            <table class="table table-borderless">
+                                <tr>
+                                    <th class="w-25">Tên giao dịch</th>
+                                    <td>@Model.ContactName</td>
+                                </tr>
+                                <tr>
+                                    <th>Email</th>
+                                    <td>@Model.Email</td>
+                                </tr>
+                                <tr>
+                                    <th>Điện thoại</th>
+                                    <td>@Model.Phone</td>
+                                </tr>
+                                <tr>
+                                    <th>Địa chỉ</th>
+                                    <td>@Model.Address</td>
+                                </tr>
+                                <tr>
+                                    <th>Thành phố</th>
+                                    <td>@Model.Province</td>
+                                </tr>
+                                
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="EditProfile" class="btn btn-warning">
+                            <i class="bi bi-pencil me-2"></i>Chỉnh sửa
+                        </a>
+                        <a asp-action="Index" asp-controller="Home" class="btn btn-secondary">
+                            <i class="bi bi-arrow-left me-2"></i>Quay lại
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

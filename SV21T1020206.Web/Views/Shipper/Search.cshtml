@@ -1,0 +1,52 @@
+﻿@model SV21T1020206.Web.Models.ShipperSearchResult
+@{
+    Layout = null;
+}
+<p style="margin:10px 0 10px 0">
+    Có <b>@Model.RowCount</b> khách hàng trong tổng số <b>@Model.PageCount</b> trang
+
+</p>
+<div class="table-responsive">
+    <table class="table table-bordered table-hover table-striped" style="border: 1px solid black;">
+        <thead>
+            <tr class="bg-primary" style="border: 1px solid black;">
+                <th style="border: 1px solid black;">Tên người giao hàng</th>
+                <th style="border: 1px solid black;">Số điện thoại</th>
+                <th style="width: 80px; border: 1px solid black;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Data)
+            {
+                <tr style="border: 1px solid black;">
+                    <td style="border: 1px solid black;">@item.ShipperName</td>
+                    <td style="border: 1px solid black;">@item.Phone</td>
+                    <td class="text-right" style="border: 1px solid black;">
+                        <a href="~/Shipper/Edit/@item.ShipperID" class="btn btn-xs btn-info">
+                            <i class="fa fa-edit"></i>
+                        </a>
+                        <a href="~/Shipper/Delete/@item.ShipperID" class="btn btn-xs btn-danger">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="text-center">
+    <ul class="pagination">
+        @for (int p = 1; p <= Model.PageCount; p++)
+        {
+            if (p == Model.Page)
+            {
+                <li class="active"><a href="#">@p</a></li>
+            }
+            else
+            {
+                <li><a href="javascript:;" onclick="doSearch(@p)">@p</a></li>
+            }
+        }
+    </ul>
+</div>

@@ -1,0 +1,153 @@
+﻿@model SV21T1020206.Shop.Models.ProductSeachResult
+@{
+    Layout = null;
+}
+
+<!-- Hiển thị dữ liệu -->
+<p style="margin-top:10px">
+    Có <strong>@Model.RowCount</strong> mặt hàng trong tổng số <strong>@Model.PageCount</strong> trang.
+</p>
+
+<div class="row">
+    @if (Model.Data1 != null && Model.Data1.Any())
+    {
+        @foreach (var item in Model.Data1)
+        {
+            <div class="col-md-3 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-img-top position-relative">
+                        <img src="~/images/products/@(string.IsNullOrWhiteSpace(item.Photo) ? "nophoto.png" : item.Photo)"
+                             class="img-fluid w-100"
+                             style="height: 250px; object-fit: cover;"
+                             alt="@item.ProductName">
+                        <span class="badge @(item.IsSelling ? "bg-success" : "bg-danger") position-absolute top-0 end-0 m-2">
+                            @(item.IsSelling ? "Đang bán" : "Ngừng bán")
+                        </span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">@item.ProductName</h5>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong class="text-primary">@item.Price.ToString("N0") đ</strong>
+                                <small class="text-muted">/@item.Unit</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 d-flex justify-content-between">
+                        <a href="@Url.Action("Details", "Product", new { id = item.ProductID })"
+                           class="btn btn-sm btn-outline-primary">
+                            <i class="bi bi-eye"></i> Chi tiết
+                        </a>
+
+                        @if (item.IsSelling)
+                        {
+                            <button class="btn btn-sm btn-primary add-to-cart"
+                                    data-product-id="@item.ProductID"
+                                    data-product-name="@item.ProductName"
+                                    data-product-price="@item.Price"
+                                    data-product-unit="@item.Unit">
+                                <i class="bi bi-cart-plus"></i> Thêm giỏ
+                            </button>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="col-12 text-center">
+            <p class="alert alert-warning">Không tìm thấy sản phẩm nào.</p>
+        </div>
+    }
+</div>
+
+@if (Model.PageCount > 1)
+{
+    <nav aria-label="Page navigation" class="mt-4">
+        <ul class="pagination justify-content-center">
+            @if (Model.Page > 1)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="javascript:;" onclick="doSearch(@(Model.Page - 1))">
+                        <i class="bi bi-chevron-left"></i>
+                    </a>
+                </li>
+            }
+
+            @for (int i = 1; i <= Model.PageCount; i++)
+            {
+                <li class="page-item @(i == Model.Page ? "active" : "")">
+                    <a class="page-link" href="javascript:;" onclick="doSearch(@i)">@i</a>
+                </li>
+            }
+
+            @if (Model.Page < Model.PageCount)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="javascript:;" onclick="doSearch(@(Model.Page + 1))">
+                        <i class="bi bi-chevron-right"></i>
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+}
+<script>
+    $(document).ready(function () {
+        $(".add-to-cart").click(function (e) {
+            e.preventDefault();
+
+            var productID = $(this).data("product-id");
+            var productName = $(this).data("product-name");
+            var productUnit = $(this).data("product-unit");
+            var productPrice = parseFloat($(this).data("product-price"));
+            var quantity = 1;
+
+            $.ajax({
+                url: "/Order/AddToCart",
+                type: "POST",
+                data: {
+                    ProductID: productID,
+                    ProductName: productName,
+                    Unit: productUnit,
+                    Quantity: quantity,
+                    SalePrice: productPrice,
+                    TotalPrice: productPrice * quantity
+                },
+                success: function (response) {
+                    if (response === "") {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Thành công!',
+                            text: 'Đã thêm sản phẩm vào giỏ hàng',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        showShoppingCart();
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Lỗi!',
+                            text: response
+                        });
+                    }
+                },
+            });
+        });
+    });
+
+    function showShoppingCart() {
+        $.ajax({
+            url: "/Order/ShoppingCart",
+            type: "GET",
+            success: function (data) {
+                $("#shoppingCart").html(data);
+            },
+            error: function (xhr, status, error) {
+                console.error("Error loading shopping cart:", error);
+                alert("Không thể tải giỏ hàng.");
+            }
+        });
+    }
+</script>

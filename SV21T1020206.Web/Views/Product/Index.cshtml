@@ -1,44 +1,42 @@
-﻿@{
+﻿@model SV21T1020206.Web.Models.ProductSearchInput
+@{
     ViewBag.Title = "Quản lý mặt hàng";
 }
 <div class="box box-primary">
     <div class="box-body">
-        <!-- Form đầu vào tìm kiếm -->
-        <form>
+        <form id="frmSearchInput" method="get" action="~/Product/Search">
+            @Html.HiddenFor(m => m.PageSize)
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-2">
                     <label>Loại hàng:</label>
-                    <select class="form-control" name="CategoryID">
-                        <option value="">-- Chọn loại hàng --</option>
-                        <option value="1">May mặc - Thời trang</option>
-                        <option value="2">Mỹ phẩm</option>
-                    </select>
+                    @Html.DropDownListFor(m => m.CategoryID, SelectListHelper.Categories(), new { @class = "form-control" })
                 </div>
                 <div class="col-sm-3">
                     <label>Nhà cung cấp:</label>
-                    <select class="form-control" name="SupplierID">
-                        <option value="">-- Chọn nhà cung cấp --</option>
-                        <option value="1">Công ty Xuất nhập khẩu Thành Hưng</option>
-                        <option value="2">Công ty TNHH Sao Mai Việt</option>
-                    </select>
+                    @Html.DropDownListFor(m => m.SupplierID, SelectListHelper.Suppliers(), new { @class = "form-control" })
                 </div>
-                <div class="col-sm-1">
+                <div class="col-sm-2">
                     <label>Giá từ:</label>
-                    <input type="text" class="form-control" name="MinPrice" value="0">
+                    <input type="text" class="form-control price" name="@nameof(Model.minPrice)" value="@Model.minPrice" />
                 </div>
-                <div class="col-sm-1">
+                <div class="col-sm-2">
                     <label>đến:</label>
-                    <input type="text" class="form-control" name="MaxPrice" value="0">
+                    <input type="text" class="form-control price" name="@nameof(Model.maxPrice)" value="@Model.maxPrice" />
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                     <label>Tên mặt hàng cần tìm:</label>
                     <div class="input-group">
-                        <input name="SearchValue" type="text" class="form-control" placeholder="Nhập mặt hàng hàng cần tìm" autofocus="">
+                        <input name="@nameof(Model.SearchValue)"
+                               type="text"
+                               class="form-control"
+                               placeholder="Nhập tên mặt hàng cần tìm"
+                               value="@Model.SearchValue"
+                               autofocus />
                         <div class="input-group-btn">
                             <button class="btn btn-info" type="submit">
                                 <i class="glyphicon glyphicon-search"></i>
                             </button>
-                            <a href="/Product/Edit" class="btn btn-primary" style="margin-left:5px">
+                            <a href="/Product/Create" class="btn btn-primary" style="margin-left:5px">
                                 <i class="fa fa-plus"></i> Bổ sung
                             </a>
                         </div>
@@ -47,55 +45,35 @@
             </div>
         </form>
 
-        <p style="margin:10px 0 10px 0">
-            Có <strong>3,000</strong> mặt hàng trong tổng số <strong>100</strong> trang
-        </p>
-
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover table-striped">
-                <thead>
-                    <tr class="bg-primary">
-                        <th style="width:80px">Ảnh</th>
-                        <th>Tên mặt hàng</th>
-                        <th>Đơn vị tính</th>
-                        <th>Giá</th>
-                        <th style="width:80px"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @for (int i = 1; i <= 5; i++)
-                    {
-                        <tr>
-                            <td>
-                                <img src="~/images/products/macbook.png" style="width:100%" alt="" />
-                            </td>
-                            <td>
-                                Macbook Pro M2 2023
-                            </td>
-                            <td>Cái</td>
-                            <td>25,000,000</td>
-                            <td class="text-right">
-                                <a href="~/Product/Edit/123" class="btn btn-xs btn-info">
-                                    <i class="fa fa-edit"></i>
-                                </a>
-                                <a href="~/Product/Delete/123" class="btn btn-xs btn-danger">
-                                    <i class="fa fa-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-
-        <div class="text-center">
-            <ul class="pagination">
-                <li><a href="#">1</a></li>
-                <li class="active"><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-            </ul>
-        </div>
+        <div id="searchResult"></div>
     </div>
 </div>
+
+@section scripts {
+    <script>
+        function doSearch(page) {
+            var searchCondition = $("#frmSearchInput").serializeArray();
+            searchCondition.push({ name: "page", value: page });
+
+            var action = $("#frmSearchInput").prop("action");
+            var method = $("#frmSearchInput").prop("method");
+
+            $.ajax({
+                url: action,
+                type: method,
+                data: searchCondition,
+                success: function (data) {
+                    $("#searchResult").html(data);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            doSearch(@Model.Page);
+            $("#frmSearchInput").submit(function (e) {
+                e.preventDefault();
+                doSearch(1);
+            });
+        });
+    </script>
+}

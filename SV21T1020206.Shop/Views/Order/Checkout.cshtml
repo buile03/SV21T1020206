@@ -1,0 +1,127 @@
+﻿@model ProductSearchInput
+@{
+    ViewBag.Title = "Đặt hàng";
+}
+
+<div class="container mt-5">
+    <div class="row g-3">
+
+        <!-- Cart Section -->
+        <div class="col-lg-4 col-md-12">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Giỏ hàng</span>
+                <span class="badge rounded-pill bg-secondary" id="cart-count"></span>
+            </h4>
+
+            <ul class="list-group mb-3" id="cart-items">
+                <!-- Cart items will be loaded here -->
+            </ul>
+
+            <div class="card-footer d-flex justify-content-between">
+                <span>Tổng cộng (VND)</span>
+                <strong id="total-price"></strong>
+            </div>
+        </div>
+
+        <!-- Address Section -->
+        <div class="col-lg-8 col-md-12">
+            <h4 class="mb-3">Thông tin về khách hàng và địa chỉ giao hàng</h4>
+
+            <form id="frmOrderInit" action="~/Order/Init" method="post" class="form-horizontal">
+                <div class="row g-3">
+                    <!-- Customer Selection -->
+                    <div class="col-12">
+                        <label for="customerID" class="form-label">Khách hàng:</label>
+                        <select class="form-control" name="customerID" id="customerID">
+                            @{
+                                var userData = User.GetUserData();
+                                <option value="@userData.UserID">@userData.DisplayName</option>
+                            }
+                        </select>
+                    </div>
+
+                    <!-- Province Selection -->
+                    <div class="col-12">
+                        <label for="deliveryProvince" class="form-label">Tỉnh/thành:</label>
+                        <select class="form-control select2" name="deliveryProvince" id="deliveryProvince">
+                            <option value="">Chọn tỉnh thành</option>
+                            @foreach (var province in SV21T1020206.BusinessLayers.CommonDataService.ListOfProvinces())
+                            {
+                                <option value="@province.ProvinceName">@province.ProvinceName</option>
+                            }
+                        </select>
+                    </div>
+
+                    <!-- Delivery Address -->
+                    <div class="col-12">
+                        <label for="deliveryAddress" class="form-label">Địa chỉ nhận hàng:</label>
+                        <input type="text" class="form-control" name="deliveryAddress" id="deliveryAddress" placeholder="Địa chỉ nhận hàng" />
+                    </div>
+
+                    <!-- Error Message -->
+                    <div class="col-12">
+                        <span id="error-message" class="text-danger"></span>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="col-12 text-end">
+                        <button type="submit" class="btn btn-primary btn-lg w-100">
+                            <i class="fa fa-plus-circle"></i> Đặt hàng
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            loadCartItems();
+
+            $("#frmOrderInit").submit(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    url: $(this).prop("action"),
+                    type: $(this).prop("method"),
+                    data: $(this).serializeArray(),
+                    success: function (result) {
+                        if (isNaN(result)) {
+                            $("#error-message").html(result);
+                        } else {
+                            window.location.href = "Details/" + result;
+                        }
+                    }
+                });
+            });
+        });
+
+        function loadCartItems() {
+            $.ajax({
+                url: "/Order/GetCartItems",
+                type: "GET",
+                success: function (data) {
+                    let cartHtml = "";
+                    let total = 0;
+
+                    data.forEach(function (item) {
+                        cartHtml += `
+                                    <li class="list-group-item d-flex justify-content-between lh-sm">
+                                        <div>
+                                            <h6 class="my-0">${item.productName}</h6>
+                                            <small class="text-muted">Số lượng: ${item.quantity}</small>
+                                        </div>
+                                        <span class="text-muted">${item.totalPrice.toLocaleString('vi-VN')} đ</span>
+                                    </li>`;
+                        total += item.totalPrice;
+                    });
+
+                    $("#cart-items").html(cartHtml);
+                    $("#cart-count").text(data.length);
+                    $("#total-price").text(total.toLocaleString('vi-VN') + ' đ');
+                }
+            });
+        }
+    </script>
+}

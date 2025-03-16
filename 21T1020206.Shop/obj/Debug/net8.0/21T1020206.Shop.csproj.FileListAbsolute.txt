@@ -1,0 +1,8 @@
+F:\LTUDWeb\SV21T1020206\21T1020206.Shop\obj\Debug\net8.0\21T1020206.Shop.GeneratedMSBuildEditorConfig.editorconfig
+F:\LTUDWeb\SV21T1020206\21T1020206.Shop\obj\Debug\net8.0\21T1020206.Shop.AssemblyInfoInputs.cache
+F:\LTUDWeb\SV21T1020206\21T1020206.Shop\obj\Debug\net8.0\21T1020206.Shop.AssemblyInfo.cs
+F:\LTUDWeb\SV21T1020206\21T1020206.Shop\obj\Debug\net8.0\21T1020206.Shop.csproj.CoreCompileInputs.cache
+F:\LTUDWeb\SV21T1020206\21T1020206.Shop\obj\Debug\net8.0\21T1020206.Shop.MvcApplicationPartsAssemblyInfo.cache
+F:\LTUDWeb\SV21T1020206\21T1020206.Shop\obj\Debug\net8.0\21T1020206.Shop.RazorAssemblyInfo.cache
+F:\LTUDWeb\SV21T1020206\21T1020206.Shop\obj\Debug\net8.0\21T1020206.Shop.RazorAssemblyInfo.cs
+F:\LTUDWeb\SV21T1020206\21T1020206.Shop\obj\Debug\net8.0\21T1020206.Shop.sourcelink.json

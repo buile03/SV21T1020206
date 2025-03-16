@@ -1,78 +1,60 @@
-﻿@{
-    ViewBag.Title = " Quản lý khách hàng";
+﻿@model SV21T1020206.Web.Models.PaginationSearchInput
+
+@{
+    ViewBag.Title = " Quản lý loại hàng";
 }
 
 <div class=" box box-primary">
-    <div class = "box-body">
-        <form>
+    <div class="box-body">
+        <form id="frmSearchInput" action="~/Category/Search" method="get">
+            <input type="hidden" name="@nameof(Model.PageSize)" value="@Model.PageSize" />
             <div class="input-group">
-                <input type = "text" class="form-control" placeholder="Nhập tên khách hàng cần tìm" autofocus />
+                <input type="text"
+                       class="form-control"
+                       placeholder="Nhập tên loại hàng cần tìm cần tìm"
+                       autofocus
+                       name="@nameof(Model.SearchValue)"
+                       value="@Model.SearchValue" />
                 <div class="input-group-btn">
-                    <button class="btn btn-info" type ="submit">
+                    <button class="btn btn-info" type="submit">
                         <i class="fa fa-search">
                         </i>
                     </button>
-                    <a href = "~/Customer/Create" class="btn btn-primary" style= "margin-left:5px">
+                    <a href="~/Category/Create" class="btn btn-primary" style="margin-left:5px">
                         <i class="fa fa-plus"></i> Bổ sung
                     </a>
                 </div>
             </div>
         </form>
+        <div id="searchResult"></div>
 
-        
-
-        <p style="margin:10px 0 10px 0">
-            Có <b>1000</b> khách hàng trong tổng số <b>100</b> trang
-
-        </p>
-        <div class="table-responsive">
-            <table class="table table-bordered table-hower table-striped">
-                <thead>
-                    <tr class= "bg-primary">
-                        <th>Tên khách hàng</th>
-                        <th>Tên giao dịch</th>
-                        <th>Điện thoại</th>
-                        <th>Email</th>
-                        <th>Địa chỉ</th>
-                        <th>Tỉnh thành</th>
-                        <th>Bị khóa?</th>
-                        <th style="width:80px"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @for(int i = 0; i<= 10; i++)
-                    {
-                        <tr>
-                            <td>Lê Văn Bùi</td>
-                            <td>Bui Le</td>
-                            <td>0362973014</td>
-                            <td>builevan0306@gmail.com</td>
-                            <td>Hue</td>
-                            <td>Thua Thien Hue</td>
-                            <td></td>
-                            <td class="text-right">
-                                <a href="~/Customer/Edit/123" class="btn btn-xs btn-info">
-                                    <i class="fa fa-edit"></i>
-                                </a>
-                                <a href="~/Customer/Delete/123" class="btn btn-xs btn-info">
-                                    <i class="fa fa-trash"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    }
-                    
-                </tbody>
-            </table>
-
-        </div>
-        <div class="text-center">
-            <ul class="pagination">
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-            </ul>
-        </div>
     </div>
 </div>
+@section scripts {
+    <script>
+        function doSearch(page) {
+            var searchCondition = $("#frmSearchInput").serializeArray();
+            searchCondition.push({ name: "page", value: page });
+
+            var action = $("#frmSearchInput").prop("action");
+            var method = $("#frmSearchInput").prop("method");
+
+            $.ajax({
+                url: action,
+                type: method,
+                data: searchCondition,
+                success: function (data) {
+                    $("#searchResult").html(data);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            doSearch(@Model.Page);
+            $("#frmSearchInput").submit(function (e) {
+                e.preventDefault();
+                doSearch(1);
+            });
+        });
+    </script>
+}

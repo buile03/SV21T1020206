@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>TNP Shop - Đăng nhập</title>
+    <title>BL Shop - Đăng nhập</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -32,7 +32,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a><b>TNP</b> Shop</a>
+            <a><b>Bui Le</b> Shop</a>
         </div>
         <!-- /.login-logo -->
         <div class="login-box-body">
@@ -41,7 +41,7 @@
             <form action="~/Account/Login" method="post">
                 @Html.AntiForgeryToken()
                 <div class="form-group has-feedback">
-                    <input type="text" class="form-control" placeholder="Tên đăng nhập" name="username" value="@ViewBag.UserName">
+                    <input type="text" class="form-control" placeholder="Tên đăng nhập" name="username" value="@ViewBag.UserName" autofocus >
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
@@ -49,7 +49,8 @@
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
                 <div class="row">
-                    <div class="col-xs-8">                                
+                    <div class="col-xs-8">
+                        @Html.ValidationMessage("Error", new {@style = "color:#f00"} )
                     </div>
                     <!-- /.col -->
                     <div class="col-xs-4">

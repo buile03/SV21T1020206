@@ -1,0 +1,81 @@
+﻿@model SV21T1020206.Shop.Models.OrderSearchInput
+
+@{
+    ViewBag.Title = "Theo dõi đơn hàng";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4">Theo dõi đơn hàng</h2>
+
+    <div class="card">
+        <div class="card-body">
+            <form id="frmSearchInput" action="~/Order/Search" method="get" class="mb-5">
+                <input type="hidden" name="@nameof(Model.PageSize)" value="@Model.PageSize" />
+                <div class="row g-3 align-items-center">
+                    <!-- Tìm kiếm theo tên -->
+                    <div class="col">
+                        <div class="input-group">
+                            <input type="text"
+                                   class="form-control"
+                                   placeholder="Nhập tên sản phẩm cần tìm.."
+                                   name="@nameof(Model.SearchValue)"
+                                   value="@Model.SearchValue" />
+                        </div>
+                    </div>
+                    <!-- Nút tìm kiếm -->
+                    <div class="col-auto">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="fa fa-search"></i> Tìm kiếm
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Kết quả tìm kiếm -->
+            <div id="searchResult" class="mt-4">
+                <!-- Kết quả tìm kiếm sẽ được hiển thị ở đây -->
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        function doSearch(page) {
+            var searchCondition = $("#frmSearchInput").serializeArray();
+            searchCondition.push({ name: "page", value: page });
+
+            var action = $("#frmSearchInput").prop("action");
+            var method = $("#frmSearchInput").prop("method");
+
+            $.ajax({
+                url: action,
+                type: method,
+                data: searchCondition,
+                success: function (data) { $("#searchResult").html(data); }
+            });
+        }
+
+        $(document).ready(function () {
+            // Khôi phục giá trị của Status từ sessionStorage (nếu có)
+            var savedStatus = sessionStorage.getItem('searchStatus');
+            if (savedStatus) {
+                $("#frmSearchInput [name='Status']").val(savedStatus);
+            }
+
+            // Xử lý lưu giá trị Status vào sessionStorage mỗi khi thay đổi
+            $("#frmSearchInput [name='Status']").on('change', function () {
+                sessionStorage.setItem('searchStatus', $(this).val());
+            });
+
+            // Thực hiện tìm kiếm khi trang tải với trang hiện tại
+            doSearch(@Model.Page);
+
+            // Ngăn chặn submit mặc định và thực hiện tìm kiếm từ trang 1 khi có tìm kiếm mới
+            $("#frmSearchInput").submit(function (e) {
+                e.preventDefault();
+                doSearch(1);
+            });
+        });
+    </script>
+}

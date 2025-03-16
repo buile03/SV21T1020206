@@ -1,46 +1,51 @@
-﻿@{
-    ViewBag.Title = "Xóa khách hàng";
+﻿@model Supplier
+@{
+    ViewBag.Title = "Xóa nhà cung cấp";
 }
 
 <div class="box box-danger">
     <div class="box-body">
-        <form>
+        <form action="~/Supplier/Delete/@Model.SupplierID" method="post">
 
             <div class="form-group">
-                <label>Tên khách hàng</label>
-                <p class="form-control-static form-control">Bùi đẹp trai</p>
+                <label>Tên nhà cung cấp</label>
+                <p class="form-control-static form-control"> @Model.SupplierName</p>
             </div>
 
             <div class="form-group">
                 <label>Tên giao dịch</label>
-                <p class="form-control-static form-control">Bùi đẹp trai</p>
+                <p class="form-control-static form-control"> @Model.ContactName</p>
             </div>
 
             <div class="form-group">
-                <label>Điện thoại</label>
-                <p class="form-control-static form-control">Bùi đẹp trai</p>
-            </div>
-
-            <div class="form-group">
-                <label>Email</label>
-                <p class="form-control-static form-control">Bùi đẹp trai</p>
+                <label>Tỉnh thành</label>
+                <p class="form-control-static form-control"> @Model.Province</p>
             </div>
 
             <div class="form-group">
                 <label>Địa chỉ</label>
-                <p class="form-control-static form-control">Bùi đẹp trai</p>
+                <p class="form-control-static form-control"> @Model.Address</p>
             </div>
 
             <div class="form-group">
-                <label>Trạng thái</label>
-                <p class="form-control-static form-control">Bùi đẹp trai</p>
+                <label>Số điện thoại</label>
+                <p class="form-control-static form-control"> @Model.Phone</p>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <p class="form-control-static form-control"> @Model.Email</p>
             </div>
 
             <div class="form-group text-right">
-                <button type="submit" class="btn btn-danger">
-                    <i class="fa fa-trash"></i> Xóa dữ liệu
-                </button>
-                <a href="~/Customer" class="btn btn-default"></a>
+                @if (!SV21T1020206.BusinessLayers.CommonDataService.InUsedSupplier(Model.SupplierID))
+                {
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fa fa-trash"></i> Xóa dữ liệu
+                    </button>
+                }
+                
+                <a href="~/Supplier" class="btn btn-default">Quay lại</a>
                 
 
         </form>

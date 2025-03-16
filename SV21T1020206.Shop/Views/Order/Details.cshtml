@@ -1,0 +1,177 @@
+﻿@model OrderDetailModel
+
+@{
+    ViewBag.Title = "Theo dõi đơn hàng";
+}
+
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-12 d-flex justify-content-between">
+            <div class="btn-group">
+                @if (Model.Order?.Status != SV21T1020206.DomainModels.Constants.ORDER_FINISHED
+                && Model.Order?.Status != SV21T1020206.DomainModels.Constants.ORDER_CANCEL
+                && Model.Order?.Status != SV21T1020206.DomainModels.Constants.ORDER_ACCEPTED
+                && Model.Order?.Status != SV21T1020206.DomainModels.Constants.ORDER_SHIPPING)
+                {
+                    <a href="~/Order/Cancel/@Model.Order.OrderID" class="btn btn-danger btn-sm" onclick="return confirm('Xác nhận hủy đơn hàng này?')">Hủy đơn hàng</a>
+                }
+            </div>
+            <a href="~/Order" class="btn btn-info btn-sm">Quay lại</a>
+        </div>
+    </div>
+
+    <!-- Order Information -->
+    <div class="row">
+        <div class="col-md-6">
+            <h5>Thông tin đơn hàng</h5>
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th>Mã đơn hàng:</th>
+                        <td>@Model.Order?.OrderID</td>
+                    </tr>
+                    <tr>
+                        <th>Ngày lập đơn hàng:</th>
+                        <td>@Model.Order?.OrderTime.ToString("dd/MM/yyyy HH:mm", new System.Globalization.CultureInfo("en-GB"))</td>
+                    </tr>
+                    <tr>
+                        <th>Ngày nhận đơn hàng:</th>
+                        <td>@Model.Order?.AcceptTime?.ToString("dd/MM/yyyy HH:mm", new System.Globalization.CultureInfo("en-GB"))</td>
+                    </tr>
+                    <tr>
+                        <th>Trạng thái đơn hàng:</th>
+                        <td>@Model.Order?.StatusDescription</td>
+                    </tr>
+                    <tr>
+                        <th>Thời điểm hoàn tất:</th>
+                        <td>@Model.Order?.FinishedTime?.ToString("dd/MM/yyyy HH:mm", new System.Globalization.CultureInfo("en-GB"))</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-6">
+            <h5>Thông tin khách hàng</h5>
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th>Khách hàng:</th>
+                        <td>@Model.Order?.CustomerName</td>
+                    </tr>
+                    <tr>
+                        <th>Địa chỉ:</th>
+                        <td>@Model.Order?.CustomerAddress</td>
+                    </tr>
+                    <tr>
+                        <th>Email:</th>
+                        <td>@Model.Order?.CustomerEmail</td>
+                    </tr>
+                    <tr>
+                        <th>Địa chỉ giao hàng:</th>
+                        <td>@Model.Order?.DeliveryAddress</td>
+                    </tr>
+                    <tr>
+                        <th>Tỉnh/thành:</th>
+                        <td>@Model.Order?.DeliveryProvince</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Shipping Information -->
+    <div class="row">
+        <div class="col-md-6">
+            <h5>Thông tin giao hàng</h5>
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th>Người giao hàng:</th>
+                        <td>@Model.Order?.ShipperName</td>
+                    </tr>
+                    <tr>
+                        <th>Điện thoại:</th>
+                        <td>@Model.Order?.ShipperPhone</td>
+                    </tr>
+                    <tr>
+                        <th>Nhận giao hàng lúc:</th>
+                        <td>@Model.Order?.ShippedTime?.ToString("dd/MM/yyyy HH:mm", new System.Globalization.CultureInfo("en-GB"))</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-6">
+            <h5>Phương thức thanh toán</h5>
+            <p><strong>Thanh toán khi nhận hàng</strong></p>
+        </div>
+    </div>
+
+    <!-- Product Details Table -->
+    <div class="table-responsive">
+        <h4 class="my-4">Danh sách mặt hàng thuộc đơn hàng</h4>
+        <table class="table table-bordered table-striped">
+            <thead class="table-primary">
+                <tr>
+                    <th class="text-center">STT</th>
+                    <th class="text-center">Tên hàng</th>
+                    <th class="text-center">ĐVT</th>
+                    <th class="text-center">Số lượng</th>
+                    <th class="text-center">Giá</th>
+                    <th class="text-center">Thành tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Details)
+                {
+                    <tr>
+                        <td class="text-center">1</td>
+                        <td>@item.ProductName</td>
+                        <td class="text-center">@item.Unit</td>
+                        <td class="text-center">@item.Quantity</td>
+                        <td class="text-right">@item.SalePrice.ToString("N0")</td>
+                        <td class="text-right">@item.TotalPrice.ToString("N0")</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                @{
+                    decimal total = 0;
+                }
+                @foreach (var item in Model.Details)
+                {
+                    total += item.TotalPrice;
+                }
+                <tr>
+                    <th colspan="5" class="text-right">Tổng cộng:</th>
+                    <th class="text-right">@total.ToString("N0")</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+</div>
+
+<!-- Modal for actions -->
+<div id="dialogModal" class="modal fade" role="dialog">
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $(".btn-modal").click(function (e) {
+                e.preventDefault();
+                var link = $(this).prop("href");
+                $.ajax({
+                    url: link,
+                    type: "GET",
+                    success: function (data) {
+                        $("#dialogModal").empty();
+                        $("#dialogModal").html(data);
+                        $("#dialogModal").modal();
+                    }
+                });
+            });
+        });
+    </script>
+}

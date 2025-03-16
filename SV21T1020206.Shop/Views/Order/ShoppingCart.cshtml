@@ -1,0 +1,171 @@
+﻿@model IEnumerable<CartItem>
+@{
+    Layout = null;
+    decimal sumOfPrice = Model.Sum(m => m.TotalPrice);
+}
+
+<div class="container-fluid bg-light">
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0">
+                        <i class="bi bi-cart-fill me-2"></i> Giỏ Hàng Của Bạn
+                    </h4>
+                    <span class="badge bg-light text-dark">@Model.Count() sản phẩm</span>
+                </div>
+
+                @if (Model.Any())
+                {
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Sản Phẩm</th>
+                                        <th>Đơn Giá</th>
+                                        <th>Số Lượng</th>
+                                        <th>Thành Tiền</th>
+                                        <th class="text-center">Thao Tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cart-items">
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr data-product-id="@item.ProductID">
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <img src="~/images/products/@(string.IsNullOrWhiteSpace(item.Photo) ? "nophoto.png" : item.Photo)"
+                                                         class="img-thumbnail me-3"
+                                                         style="width: 80px; height: 80px; object-fit: cover;"
+                                                         alt="@item.ProductName">
+                                                    <div>
+                                                        <h6 class="mb-1">@item.ProductName</h6>
+                                                        <small class="text-muted">@item.Unit</small>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><span class="text-primary">@item.SalePrice.ToString("N0") đ</span></td>
+                                            <td>
+                                                <div class="input-group input-group-sm" style="width: 130px;">
+                                                    <button class="btn btn-outline-secondary btn-quantity-decrease" type="button">
+                                                        <i class="bi bi-dash"></i>
+                                                    </button>
+                                                    <input type="number"
+                                                           class="form-control text-center quantity-input"
+                                                           value="@item.Quantity"
+                                                           min="1">
+                                                    <button class="btn btn-outline-secondary btn-quantity-increase" type="button">
+                                                        <i class="bi bi-plus"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <strong class="text-success item-total">@((item.SalePrice * item.Quantity).ToString("N0")) đ</strong>
+                                            </td>
+                                            <td class="text-center">
+                                                <a href="~/Order/RemoveFromCart/@item.ProductID" class="btn btn-sm btn-outline-danger btn-remove-item ajax-link"
+                                                   onclick="return confirm('Xóa mặt hàng @item.ProductName ra khỏi giỏ hàng?')">
+                                                    <i class="bi bi-trash"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">
+                                Tổng Cộng: <span class="text-primary" id="total-price">@sumOfPrice.ToString("N0") đ</span>
+                            </h5>
+                            <div>
+                                <a href="~/Order/ClearCart" class="btn btn-outline-secondary me-2 btn-clear-cart ajax-link" onclick="return confirm('Có muốn xóa giỏ hàng không?')">
+                                    <i class="bi bi-trash me-1"></i> Xóa giỏ hàng
+                                </a>
+                                <a href="~/Order/Checkout" class="btn btn-primary btn-checkout">
+                                    <i class="bi bi-credit-card me-1"></i> Thanh Toán
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="card-body text-center py-5">
+                        <i class="bi bi-cart-x text-muted" style="font-size: 4rem;"></i>
+                        <h4 class="mt-3">Giỏ hàng trống</h4>
+                        <p class="text-muted">Hãy thêm sản phẩm vào giỏ hàng</p>
+                        <a href="/Product" class="btn btn-primary mt-3">
+                            <i class="bi bi-shop me-1"></i> Tiếp Tục Mua Hàng
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $(document).ready(function () {
+            $(".ajax-link").click(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    url: $(this).prop("href"),
+                    type: "GET",
+                    success: function (data) {
+                        if (data !== "") {
+                            alert(data);
+                        }
+                        else {
+                            showShoppingCart();
+                        }
+                    }
+                });
+            });
+        });
+        function updateCart(productId, quantity) {
+            $.post("/Order/UpdateQuantity", { productId, quantity }, function (response) {
+                if (response.success) {
+                    const row = $(`tr[data-product-id='${productId}']`);
+                    const price = parseFloat(row.find(".text-primary").text().replace(/[^\d]/g, ''));
+                    const total = quantity * price;
+                    row.find(".item-total").text(`${total.toLocaleString('vi-VN')} đ`);
+                    $("#total-price").text(`${response.totalPrice.toLocaleString('vi-VN')} đ`);
+                } else {
+                    alert(response.message);
+                }
+            });
+        }
+
+        $(".btn-quantity-decrease").click(function () {
+            const input = $(this).siblings(".quantity-input");
+            let quantity = parseInt(input.val()) - 1;
+            if (quantity >= 1) {
+                input.val(quantity);
+                const productId = $(this).closest("tr").data("product-id");
+                updateCart(productId, quantity);
+            }
+        });
+
+        $(".btn-quantity-increase").click(function () {
+            const input = $(this).siblings(".quantity-input");
+            let quantity = parseInt(input.val()) + 1;
+            input.val(quantity);
+            const productId = $(this).closest("tr").data("product-id");
+            updateCart(productId, quantity);
+        });
+
+        $(".quantity-input").change(function () {
+            const quantity = parseInt($(this).val());
+            if (quantity >= 1) {
+                const productId = $(this).closest("tr").data("product-id");
+                updateCart(productId, quantity);
+            } else {
+                $(this).val(1);
+            }
+        });
+    });
+</script>

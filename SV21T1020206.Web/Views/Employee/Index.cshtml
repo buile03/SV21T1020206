@@ -1,16 +1,19 @@
-﻿@{
+﻿@model SV21T1020206.Web.Models.PaginationSearchInput
+@{
     ViewBag.Title = "Quản lý nhân viên";
 }
 
 <div class="box box-primary">
     <div class="box-body">
         <!-- Form nhập đầu vào tìm kiếm-->
-        <form>
+        <form id="frmSearchInput" action="~/Employee/Search" method="get">
+            <input type="hidden" name="@nameof(Model.PageSize)" value="@Model.PageSize" />
             <div class="input-group">
-                <input name="searchValue"
-                       type="text"
+                <input name="@nameof(Model.SearchValue)"
+                       type="text" 
                        class="form-control"
                        placeholder="Nhập tên nhân viên cần tìm"
+                       value="@Model.SearchValue"
                        autofocus />
                 <div class="input-group-btn">
                     <button class="btn btn-info" type="submit">
@@ -24,59 +27,35 @@
         </form>
 
         <!-- Hiển thị dữ liệu -->
-        <p style="margin-top:10px">
-            Có <strong>100</strong> nhân viên trong tổng số <strong>10</strong> trang.
-        </p>
-        <div class="row">
-            @for (int i = 1; i <= 9; i++)
-            {
-                <div class="col-sm-4">
-                    <div class="box box-info">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Nguyễn Thị Thanh Ngân</h3>
-                            <div class="box-tools pull-right">
-                                <a class="btn btn-box-tool" href="~/Employee/Edit">
-                                    <i class="fa fa-edit text-primary"></i>
-                                </a>
-                                <a class="btn btn-box-tool" href="~/Employee/Delete">
-                                    <i class="fa fa-trash text-danger"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="box-body">
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <img class="profile-user-img img-responsive img-bordered" src="~/themes/dist/img/user4-128x128.jpg">
-                                </div>
-                                <div class="col-sm-8">
-                                    <ul class="list-group list-group-unbordered">
-                                        <li class="list-group-item">
-                                            <i class="fa fa-birthday-cake"></i> 01/11/1973
-                                        </li>
-                                        <li class="list-group-item">
-                                            <i class="fa fa-phone"></i> 06269045225
-                                        </li>
-                                        <li class="list-group-item">
-                                            <i class="fa fa-envelope"></i> thanhngan@mycompany.com
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
-        </div>
-
-        <div class="text-center">
-            <ul class="pagination">
-                <li><a href="#">1</a></li>
-                <li class="active"><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-            </ul>
-        </div>
+        <div id="searchResult"></div>
 
     </div>
 </div>
+@section scripts {
+    <script>
+        function doSearch(page) {
+            var searchCondition = $("#frmSearchInput").serializeArray();
+            searchCondition.push({ name: "page", value: page });
+
+            var action = $("#frmSearchInput").prop("action");
+            var method = $("#frmSearchInput").prop("method");
+
+            $.ajax({
+                url: action,
+                type: method,
+                data: searchCondition,
+                success: function (data) {
+                    $("#searchResult").html(data);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            doSearch(@Model.Page);
+            $("#frmSearchInput").submit(function (e) {
+                e.preventDefault();
+                doSearch(1);
+            });
+        });
+    </script>
+}

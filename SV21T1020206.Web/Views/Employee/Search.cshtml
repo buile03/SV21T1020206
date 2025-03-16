@@ -1,0 +1,68 @@
+﻿@model SV21T1020206.Web.Models.EmployeeSearchResult
+@{
+    Layout = null;
+}
+<p style="margin-top:10px">
+    Có <strong>@Model.RowCount</strong> nhân viên trong tổng số <strong>@Model.PageCount</strong> trang.
+</p>
+
+<div class="row">
+    @foreach (var item in Model.Data)
+    {
+        <div class="col-sm-4 mb-4" style="border: 2px solid black; border-radius: 10px; padding-top: 10px; margin-bottom: 30px; position: static">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div class="col-sm-4">
+                        <img class="profile-user-img img-responsive img-bordered" src="~/images/employees/@(string.IsNullOrWhiteSpace(item.Photo) ? "nophoto.png" : item.Photo )"
+                             style="border: 1px solid black; width: 100%; object-fit: cover;">
+                    </div>
+                    <div class="text-right">
+                        <a href="~/Employee/Edit/@item.EmployeeID" class="btn btn-primary btn-sm">
+                            <i class="fa fa-edit"></i> 
+                        </a>
+                        <a href="~/Employee/Delete/@item.EmployeeID" class="btn btn-xs btn-danger">
+                            <i class="fa fa-trash"></i> 
+                        </a>
+                    </div> 
+
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <i class="fa fa-user mr-2" style="font-size: 20px"></i> @item.FullName
+                    </h5>
+                    <h6 class="card-subtitle mb-2 text-muted" style="margin-bottom: 25px">
+                        <i class="fa fa-birthday-cake mr-2" style="font-size: 14px"></i> @item.BirthDate
+                    </h6>
+
+                    <ul class="list-group list-group-flush mt-3">
+                        <li class="list-group-item" style="border: 1px solid black; ">
+                            <i class="fa fa-phone mr-2"></i> @item.Phone
+                        </li>
+                        <li class="list-group-item" style="border: 1px solid black;">
+                            <i class="fa fa-envelope mr-2"></i> @item.Email
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+
+
+
+<div class="text-center">
+    <ul class="pagination">
+        @for (int p = 1; p <= Model.PageCount; p++)
+        {
+            if (p == Model.Page)
+            {
+                <li class="active"><a href="#">@p</a></li>
+            }
+            else
+            {
+                <li><a href="javascript:;" onclick="doSearch(@p)">@p</a></li>
+            }
+        }
+    </ul>
+</div>

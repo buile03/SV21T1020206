@@ -1,0 +1,94 @@
+﻿@using SV21T1020206.DomainModels
+<!-- Navbar Start -->
+<div class="container-fluid fixed-top px-0 wow fadeIn" data-wow-delay="0.1s">
+    <div class="top-bar row gx-0 align-items-center d-none d-lg-flex bg-light py-2">
+        <div class="col-lg-6 px-5 text-start">
+            <small><i class="fa fa-map-marker-alt me-2"></i>TP Huế, Việt Nam</small>
+            <small class="ms-4"><i class="fa fa-envelope me-2"></i>bancathegioi.com</small>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+        <a href="~/Home" class="navbar-brand ms-4 ms-lg-0">
+            <h1 class="fw-bold text-primary m-0"><span class="text-secondary">LVB</span>Shop</h1>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="~/Home" class="nav-item nav-link active">Trang chủ</a>
+                <a href="~/Product/Index" class="nav-item nav-link">Sản phẩm</a>
+                <a href="~/Order/Index" class="nav-item nav-link">Đơn hàng</a>
+                <a href="~/Order/Cart" class="nav-item nav-link">
+                    Giỏ hàng
+                    <span id="cart-item-count" class="badge bg-danger ms-1">
+                        @{
+                            var cart = ApplicationContext.GetSessionData<List<OrderDetail>>("ShoppingCart");
+                            <text>@(cart?.Count ?? 0)</text>
+                        }
+                    </span>
+                </a>
+            </div>
+
+            <!-- User Icon Section -->
+            <div class="d-none d-lg-flex ms-2 position-relative">
+                @{
+                    var userData = User.GetUserData();
+                    if (userData != null)
+                    {
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="hidden-xs">@userData.DisplayName</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end shadow">
+                                <!-- User Header -->
+                                <li class="px-3 py-2 text-center border-bottom">
+                                    
+                                    <h6 class="mb-0">@userData.DisplayName</h6>
+                                </li>
+
+                                <!-- Menu Items -->
+                                <li>
+                                    <a class="dropdown-item" href="~/Account/Profile">
+                                        <i class="bi bi-person me-2"></i> Thông tin cá nhân
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="~/Account/EditProfile">
+                                        <i class="bi bi-pencil me-2"></i> Chỉnh sửa thông tin
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="~/Account/ChangePassword">
+                                        <i class="bi bi-lock me-2"></i> Đổi mật khẩu
+                                    </a>
+                                </li>
+
+                                <!-- Separator -->
+                                <li><hr class="dropdown-divider"></li>
+
+                                <!-- Logout -->
+                                <li>
+                                    <a class="dropdown-item text-danger" href="~/Account/Logout">
+                                        <i class="bi bi-box-arrow-right me-2"></i> Thoát
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    }
+                    else
+                    {
+                        <!-- Login Button -->
+                        <li>
+                            <a href="~/Account/Login" class="btn btn-default btn-light">Đăng nhập</a>
+                        </li>
+                    }
+                }
+            </div>
+        </div>
+    </nav>
+</div>
+<!-- Navbar End -->

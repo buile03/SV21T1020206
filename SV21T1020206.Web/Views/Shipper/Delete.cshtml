@@ -1,47 +1,30 @@
-﻿@{
-    ViewBag.Title = "Xóa khách hàng";
+﻿@model Shipper
+@{
+    ViewBag.Title = "Xóa người giao hàng";
 }
 
 <div class="box box-danger">
     <div class="box-body">
-        <form>
+        <form action="~/Shipper/Delete/@Model.ShipperID" method="post">
 
             <div class="form-group">
-                <label>Tên khách hàng</label>
-                <p class="form-control-static form-control">Bùi đẹp trai</p>
-            </div>
-
-            <div class="form-group">
-                <label>Tên giao dịch</label>
-                <p class="form-control-static form-control">Bùi đẹp trai</p>
+                <label>Tên người giao hàng</label>
+                <p class="form-control-static form-control"> @Model.ShipperName</p>
             </div>
 
             <div class="form-group">
                 <label>Điện thoại</label>
-                <p class="form-control-static form-control">Bùi đẹp trai</p>
+                <p class="form-control-static form-control"> @Model.Phone</p>
             </div>
-
-            <div class="form-group">
-                <label>Email</label>
-                <p class="form-control-static form-control">Bùi đẹp trai</p>
-            </div>
-
-            <div class="form-group">
-                <label>Địa chỉ</label>
-                <p class="form-control-static form-control">Bùi đẹp trai</p>
-            </div>
-
-            <div class="form-group">
-                <label>Trạng thái</label>
-                <p class="form-control-static form-control">Bùi đẹp trai</p>
-            </div>
-
             <div class="form-group text-right">
-                <button type="submit" class="btn btn-danger">
-                    <i class="fa fa-trash"></i> Xóa dữ liệu
-                </button>
-                <a href="~/Customer" class="btn btn-default"></a>
-                
+                @if (!SV21T1020206.BusinessLayers.CommonDataService.InUsedShipper(Model.ShipperID))
+                {
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fa fa-trash"></i> Xóa dữ liệu
+                    </button>
+                }
+                <a href="~/Shipper" class="btn btn-default">Quay lại</a>
+            </div>    
 
         </form>
     </div>

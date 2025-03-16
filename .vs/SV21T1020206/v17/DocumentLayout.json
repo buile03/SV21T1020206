@@ -3,28 +3,24 @@
   "WorkspaceRootPath": "F:\\LTUDWeb\\SV21T1020206\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5D3111D9-F0FC-4AFA-B605-9BA11BDEFDB2}|SV21T1020206.Web\\SV21T1020206.Web.csproj|f:\\ltudweb\\sv21t1020206\\sv21t1020206.web\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5D3111D9-F0FC-4AFA-B605-9BA11BDEFDB2}|SV21T1020206.Web\\SV21T1020206.Web.csproj|solutionrelative:sv21t1020206.web\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{9BB64B6A-9490-42DD-B92C-5621F049E49C}|SV21T1020206.Shop\\SV21T1020206.Shop.csproj|f:\\ltudweb\\sv21t1020206\\sv21t1020206.shop\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9BB64B6A-9490-42DD-B92C-5621F049E49C}|SV21T1020206.Shop\\SV21T1020206.Shop.csproj|solutionrelative:sv21t1020206.shop\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5D3111D9-F0FC-4AFA-B605-9BA11BDEFDB2}|SV21T1020206.Web\\SV21T1020206.Web.csproj|f:\\ltudweb\\sv21t1020206\\sv21t1020206.web\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5D3111D9-F0FC-4AFA-B605-9BA11BDEFDB2}|SV21T1020206.Web\\SV21T1020206.Web.csproj|solutionrelative:sv21t1020206.web\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9BB64B6A-9490-42DD-B92C-5621F049E49C}|SV21T1020206.Shop\\SV21T1020206.Shop.csproj|f:\\ltudweb\\sv21t1020206\\sv21t1020206.shop\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9BB64B6A-9490-42DD-B92C-5621F049E49C}|SV21T1020206.Shop\\SV21T1020206.Shop.csproj|solutionrelative:sv21t1020206.shop\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5D3111D9-F0FC-4AFA-B605-9BA11BDEFDB2}|SV21T1020206.Web\\SV21T1020206.Web.csproj|f:\\ltudweb\\sv21t1020206\\sv21t1020206.web\\views\\order\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5D3111D9-F0FC-4AFA-B605-9BA11BDEFDB2}|SV21T1020206.Web\\SV21T1020206.Web.csproj|solutionrelative:sv21t1020206.web\\views\\order\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{9BB64B6A-9490-42DD-B92C-5621F049E49C}|SV21T1020206.Shop\\SV21T1020206.Shop.csproj|f:\\ltudweb\\sv21t1020206\\sv21t1020206.shop\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9BB64B6A-9490-42DD-B92C-5621F049E49C}|SV21T1020206.Shop\\SV21T1020206.Shop.csproj|solutionrelative:sv21t1020206.shop\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5D3111D9-F0FC-4AFA-B605-9BA11BDEFDB2}|SV21T1020206.Web\\SV21T1020206.Web.csproj|f:\\ltudweb\\sv21t1020206\\sv21t1020206.web\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5D3111D9-F0FC-4AFA-B605-9BA11BDEFDB2}|SV21T1020206.Web\\SV21T1020206.Web.csproj|solutionrelative:sv21t1020206.web\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9BB64B6A-9490-42DD-B92C-5621F049E49C}|SV21T1020206.Shop\\SV21T1020206.Shop.csproj|f:\\ltudweb\\sv21t1020206\\sv21t1020206.shop\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9BB64B6A-9490-42DD-B92C-5621F049E49C}|SV21T1020206.Shop\\SV21T1020206.Shop.csproj|solutionrelative:sv21t1020206.shop\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5D3111D9-F0FC-4AFA-B605-9BA11BDEFDB2}|SV21T1020206.Web\\SV21T1020206.Web.csproj|f:\\ltudweb\\sv21t1020206\\sv21t1020206.web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5D3111D9-F0FC-4AFA-B605-9BA11BDEFDB2}|SV21T1020206.Web\\SV21T1020206.Web.csproj|solutionrelative:sv21t1020206.web\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5D3111D9-F0FC-4AFA-B605-9BA11BDEFDB2}|SV21T1020206.Web\\SV21T1020206.Web.csproj|f:\\ltudweb\\sv21t1020206\\sv21t1020206.web\\views\\supplier\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5D3111D9-F0FC-4AFA-B605-9BA11BDEFDB2}|SV21T1020206.Web\\SV21T1020206.Web.csproj|solutionrelative:sv21t1020206.web\\views\\supplier\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{1C465DE4-57F2-4D6C-BA44-2F92D421167C}|SV21T1020206.DomainModels\\SV21T1020206.DomainModels.csproj|f:\\ltudweb\\sv21t1020206\\sv21t1020206.domainmodels\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C465DE4-57F2-4D6C-BA44-2F92D421167C}|SV21T1020206.DomainModels\\SV21T1020206.DomainModels.csproj|solutionrelative:sv21t1020206.domainmodels\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,85 +30,96 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "F:\\LTUDWeb\\SV21T1020206\\SV21T1020206.Web\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "SV21T1020206.Web\\Views\\Home\\Index.cshtml",
-              "ToolTip": "F:\\LTUDWeb\\SV21T1020206\\SV21T1020206.Web\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "SV21T1020206.Web\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAADIAAAAAAAAAAAAAAD8AAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-27T08:55:02.413Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "F:\\LTUDWeb\\SV21T1020206\\SV21T1020206.Web\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "SV21T1020206.Web\\Controllers\\AccountController.cs",
-              "ToolTip": "F:\\LTUDWeb\\SV21T1020206\\SV21T1020206.Web\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "SV21T1020206.Web\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAJAAAAAAAAAA==",
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "F:\\LTUDWeb\\SV21T1020206\\SV21T1020206.Shop\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "SV21T1020206.Shop\\Controllers\\OrderController.cs",
+              "ToolTip": "F:\\LTUDWeb\\SV21T1020206\\SV21T1020206.Shop\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "SV21T1020206.Shop\\Controllers\\OrderController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-27T08:42:45.751Z",
+              "WhenOpened": "2025-01-07T08:52:28.348Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "F:\\LTUDWeb\\SV21T1020206\\SV21T1020206.Web\\Views\\Order\\Index.cshtml",
-              "RelativeDocumentMoniker": "SV21T1020206.Web\\Views\\Order\\Index.cshtml",
-              "ToolTip": "F:\\LTUDWeb\\SV21T1020206\\SV21T1020206.Web\\Views\\Order\\Index.cshtml",
-              "RelativeToolTip": "SV21T1020206.Web\\Views\\Order\\Index.cshtml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-27T08:31:48.396Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "OrderController.cs",
-              "DocumentMoniker": "F:\\LTUDWeb\\SV21T1020206\\SV21T1020206.Web\\Controllers\\OrderController.cs",
-              "RelativeDocumentMoniker": "SV21T1020206.Web\\Controllers\\OrderController.cs",
-              "ToolTip": "F:\\LTUDWeb\\SV21T1020206\\SV21T1020206.Web\\Controllers\\OrderController.cs",
-              "RelativeToolTip": "SV21T1020206.Web\\Controllers\\OrderController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAowBIAAAAJAAAAAAAAAA==",
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "F:\\LTUDWeb\\SV21T1020206\\SV21T1020206.Shop\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "SV21T1020206.Shop\\Controllers\\ProductController.cs",
+              "ToolTip": "F:\\LTUDWeb\\SV21T1020206\\SV21T1020206.Shop\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "SV21T1020206.Shop\\Controllers\\ProductController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-27T08:22:15.135Z",
+              "WhenOpened": "2025-01-07T08:52:27.397Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "F:\\LTUDWeb\\SV21T1020206\\SV21T1020206.Web\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "SV21T1020206.Web\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "F:\\LTUDWeb\\SV21T1020206\\SV21T1020206.Web\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "SV21T1020206.Web\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAIwGEAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-27T08:13:54.575Z",
+              "Title": "Customer.cs",
+              "DocumentMoniker": "F:\\LTUDWeb\\SV21T1020206\\SV21T1020206.DomainModels\\Customer.cs",
+              "RelativeDocumentMoniker": "SV21T1020206.DomainModels\\Customer.cs",
+              "ToolTip": "F:\\LTUDWeb\\SV21T1020206\\SV21T1020206.DomainModels\\Customer.cs",
+              "RelativeToolTip": "SV21T1020206.DomainModels\\Customer.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAcwBAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-06T16:59:35.181Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "F:\\LTUDWeb\\SV21T1020206\\SV21T1020206.Shop\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "SV21T1020206.Shop\\Controllers\\AccountController.cs",
+              "ToolTip": "F:\\LTUDWeb\\SV21T1020206\\SV21T1020206.Shop\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "SV21T1020206.Shop\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACcAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-06T16:28:07.331Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "F:\\LTUDWeb\\SV21T1020206\\SV21T1020206.Web\\Views\\Supplier\\Index.cshtml",
-              "RelativeDocumentMoniker": "SV21T1020206.Web\\Views\\Supplier\\Index.cshtml",
-              "ToolTip": "F:\\LTUDWeb\\SV21T1020206\\SV21T1020206.Web\\Views\\Supplier\\Index.cshtml",
-              "RelativeToolTip": "SV21T1020206.Web\\Views\\Supplier\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAwAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "F:\\LTUDWeb\\SV21T1020206\\SV21T1020206.Shop\\Views\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "SV21T1020206.Shop\\Views\\Account\\Register.cshtml",
+              "ToolTip": "F:\\LTUDWeb\\SV21T1020206\\SV21T1020206.Shop\\Views\\Account\\Register.cshtml",
+              "RelativeToolTip": "SV21T1020206.Shop\\Views\\Account\\Register.cshtml",
+              "ViewState": "AgIAABEAAAAAAAAAAAAkwBoAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-21T16:01:00.487Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-06T16:26:25.313Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 1498,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             }
           ]
         }

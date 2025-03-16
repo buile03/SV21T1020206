@@ -1,0 +1,98 @@
+﻿@model SV21T1020206.DomainModels.Customer
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BL Shop - Đăng ký</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body class="bg-light">
+    <div class="container">
+        <div class="row justify-content-center align-items-center min-vh-100 py-5">
+            <div class="col-md-6 col-lg-4">
+                <div class="card shadow-lg">
+                    <div class="card-body p-5">
+                        <h2 class="text-center mb-4">Đăng ký</h2>
+                        @if (!ViewData.ModelState.IsValid)
+                        {
+                            <div class="alert alert-danger">
+                                @Html.ValidationSummary()
+                            </div>
+                        }
+                        <form action="~/Account/Register" method="post">
+                            @Html.AntiForgeryToken()
+
+                            
+                            <div class="form-floating mb-3">
+                                <input asp-for="CustomerName" class="form-control" />
+                                <label asp-for="CustomerName"></label>
+                                @Html.ValidationMessageFor(m => m.CustomerName, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input asp-for="ContactName" class="form-control" />
+                                <label asp-for="ContactName"></label>
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input asp-for="Email" class="form-control" />
+                                <label asp-for="Email"></label>
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input asp-for="Phone" class="form-control" />
+                                <label asp-for="Phone"></label>
+                                @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <textarea asp-for="Address" class="form-control"></textarea>
+                                <label asp-for="Address"></label>
+                                @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <select asp-for="Province" class="form-select">
+                                    <option value="">--Chọn tỉnh thành--</option>
+                                    @foreach (var item in SV21T1020206.BusinessLayers.CommonDataService.ListOfProvinces())
+                                    {
+                                        <option value="@item.ProvinceName">@item.ProvinceName</option>
+                                    }
+                                </select>
+                                <label asp-for="Province"></label>
+                                @Html.ValidationMessageFor(m => m.Province, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input asp-for="Password" class="form-control" type="password" />
+                                <label asp-for="Password"></label>
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-floating mb-3">
+                                <input type="password" name="confirmPassword" class="form-control" />
+                                <label>Xác nhận mật khẩu</label>
+                                @Html.ValidationMessage("confirmPassword", "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary btn-lg">Đăng ký</button>
+                                <a href="~/Account/Login" class="btn btn-outline-secondary">Đã có tài khoản? Đăng nhập</a>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
